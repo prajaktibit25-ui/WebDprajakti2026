@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>College Department FAQ</title>
+
+    <style>
+
+        /* ---------- GENERAL ---------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        /* ---------- MAIN CONTAINER ---------- */
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* ---------- HEADER ---------- */
+
+        .header {
+            background: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            color: #4a55a2;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .student-name {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 16px;
+        }
+
+        /* ---------- FAQ BOX ---------- */
+
+        .faq {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .faq:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+        }
+
+        /* ---------- QUESTION ---------- */
+
+        .question {
+            padding: 20px 22px;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            border-left: 5px solid #667eea;
+            transition: 0.3s;
+        }
+
+        .question:hover {
+            background-color: #f5f6ff;
+            color: #4a55a2;
+        }
+
+        /* Plus / Minus symbol */
+
+        .question::after {
+            content: "+";
+            font-size: 26px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .faq.active .question::after {
+            content: "−";
+        }
+
+        /* ---------- ANSWER ---------- */
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+
+            padding: 0 25px;
+
+            color: #666;
+            line-height: 1.7;
+            font-size: 15px;
+
+            background-color: #fafaff;
+
+            transition:
+                max-height 0.4s ease,
+                padding 0.4s ease;
+        }
+
+        .faq.active .answer {
+            max-height: 200px;
+            padding: 18px 25px 20px;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: #fff;
+        }
+
+        /* ---------- MOBILE ---------- */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 25px 15px;
+            }
+
+            .header {
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .student-name {
+                font-size: 16px;
+                padding: 9px 18px;
+            }
+
+            .question {
+                padding: 17px;
+                font-size: 15px;
+            }
+
+            .answer {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>🎓 College Department FAQ</h1>
+
+            <!-- Student Name and Roll Number in Center -->
+
+            <div class="student-name">
+                Prajakti Bhoyar | IT25095
+            </div>
+
+            <p class="subtitle">
+                Frequently Asked Questions for Students
+            </p>
+
+        </div>
+
+
+        <!-- FAQ 1 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>1. What are the college working hours?</span>
+            </div>
+
+            <div class="answer">
+                College working hours are from <strong>9:00 AM to 4:00 PM</strong>.
+            </div>
+
+        </div>
+
+
+        <!-- FAQ 2 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>2. How can I apply for leave?</span>
+            </div>
+
+            <div class="answer">
+                Students can apply for leave through the
+                <strong>college portal</strong>.
+            </div>
+
+        </div>
+
+
+        <!-- FAQ 3 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>3. Where can I find the exam timetable?</span>
+            </div>
+
+            <div class="answer">
+                The exam timetable is available on the
+                <strong>department notice board</strong> and
+                <strong>college website</strong>.
+            </div>
+
+        </div>
+
+
+        <!-- FAQ 4 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>4. How can I contact the department?</span>
+            </div>
+
+            <div class="answer">
+                You can contact the department office during
+                <strong>working hours</strong>.
+            </div>
+
+        </div>
+
+
+        <!-- FAQ 5 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>5. Where can I get study materials?</span>
+            </div>
+
+            <div class="answer">
+                Study materials are available through the
+                <strong>college portal</strong> and department resources.
+            </div>
+
+        </div>
+
+
+        <!-- FAQ 6 -->
+
+        <div class="faq">
+
+            <div class="question">
+                <span>6. How can I check my attendance?</span>
+            </div>
+
+            <div class="answer">
+                Students can check their attendance through the
+                <strong>college student portal</strong>.
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            © 2026 College Department | Designed by
+            <strong>Prajakti Bhoyar - IT25095</strong>
+        </footer>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // Select all FAQ boxes
+        const faqs = document.querySelectorAll(".faq");
+
+        // Add click event to each FAQ
+        faqs.forEach(function(faq) {
+
+            const question = faq.querySelector(".question");
+
+            question.addEventListener("click", function() {
+
+                // Check whether the clicked FAQ is already open
+                const isActive = faq.classList.contains("active");
+
+                // Close all FAQs
+                faqs.forEach(function(item) {
+                    item.classList.remove("active");
+                });
+
+                // Open the clicked FAQ if it was previously closed
+                if (!isActive) {
+                    faq.classList.add("active");
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
