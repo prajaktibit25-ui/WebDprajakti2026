@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-violet-50 flex items-center justify-center p-4 text-slate-800">
+
+  <main class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl sm:p-8">
+    <header class="mb-6 text-center">
+      <h1 class="text-3xl font-bold text-violet-700">My To-Do List</h1>
+      <p class="mt-2 text-slate-500">Small steps, big progress.</p>
+    </header>
+
+    <form id="taskForm" class="mb-6">
+      <label for="taskInput" class="mb-2 block font-medium">New task</label>
+      <div class="flex gap-2">
+        <input id="taskInput" type="text" placeholder="What needs to be done?"
+          required maxlength="200" autocomplete="off"
+          class="min-w-0 flex-1 rounded-lg border border-slate-300 p-3 focus:outline-2 focus:outline-violet-500">
+        <button type="submit"
+          class="rounded-lg bg-violet-600 px-5 font-semibold text-white hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600">
+          Add
+        </button>
+      </div>
+    </form>
+
+    <section aria-labelledby="tasksHeading">
+      <h2 id="tasksHeading" class="text-lg font-semibold">Your tasks</h2>
+      <p id="taskCount" role="status" class="mb-4 text-sm text-slate-500">
+        0 of 0 tasks completed
+      </p>
+      <ul id="taskList" class="space-y-3"></ul>
+      <p id="emptyMessage" class="rounded-lg bg-slate-50 p-6 text-center text-slate-500">
+        No tasks yet. Add your first task above!
+      </p>
+    </section>
+
+    <footer class="mt-6 border-t border-slate-100 pt-4 text-center text-sm text-slate-500">
+      Check a task when you finish it.
+    </footer>
+  </main>
+
+  <script>
+    const form = document.getElementById("taskForm");
+    const input = document.getElementById("taskInput");
+    const list = document.getElementById("taskList");
+    const counter = document.getElementById("taskCount");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    function updateCount() {
+      const total = list.children.length;
+      const completed = list.querySelectorAll("input:checked").length;
+      counter.textContent = `${completed} of ${total} tasks completed`;
+      emptyMessage.hidden = total > 0;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const task = input.value.trim();
+
+      if (!task) {
+        input.focus();
+        return;
+      }
+
+      const item = document.createElement("li");
+      item.className = "flex items-center gap-3 rounded-lg bg-violet-50 p-3";
+
+      item.innerHTML = `
+        <label class="flex min-w-0 flex-1 cursor-pointer items-center gap-3">
+          <input type="checkbox" class="peer size-5 shrink-0 accent-violet-600">
+          <span class="min-w-0 [overflow-wrap:anywhere] peer-checked:text-slate-500 peer-checked:line-through"></span>
+        </label>
+        <button type="button" class="shrink-0 rounded px-2 py-1 text-sm font-medium text-red-600 hover:bg-red-100 focus-visible:outline-2 focus-visible:outline-red-600">
+          Delete
+        </button>`;
+
+      // Safely display the user's task.
+      item.querySelector("span").textContent = task;
+      item.querySelector("input").addEventListener("change", updateCount);
+
+      const deleteButton = item.querySelector("button");
+      deleteButton.setAttribute("aria-label", `Delete task: ${task}`);
+
+      deleteButton.addEventListener("click", function () {
+        item.remove();
+        updateCount();
+        input.focus();
+      });
+
+      list.appendChild(item);
+      form.reset();
+      input.focus();
+      updateCount();
+    });
+  </script>
+</body>
+</html>
